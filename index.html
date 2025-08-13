@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生生不息 - 个人主页</title>
+
+    <meta property="og:title" content="生生不息 - 个人主页">
+    <meta property="og:description" content="生生不息">
+    <meta property="og:image" content="https://img.qlqqs.com/b/2025/08/13/689c8cfedbc32.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#007aff">
+
+    <link rel="icon" href="https://img.qlqqs.com/b/2025/08/13/689c8cfedbc32.png" type="image/webp">
+    <link rel="apple-touch-icon" href="https://img.qlqqs.com/b/2025/08/13/689c8cfedbc32.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="profile-header">
+            <img id="avatar" class="avatar" src="" alt="头像">
+            <h1 id="name" class="name"></h1>
+            <p id="title" class="title"></p>
+            <p id="bio" class="bio"></p>
+        </header>
+
+        <main id="main-content" role="main">
+            <section class="links-section">
+                <h2 class="section-title">我的网站</h2>
+                <div id="websites-container" class="links-grid">
+                    </div>
+            </section>
+
+            <section class="links-section">
+                <h2 class="section-title">联系方式</h2>
+                <div id="social-links" class="links-grid">
+                    </div>
+            </section>
+        </main>
+
+        <footer class="hitokoto-section">
+            <div class="hitokoto-container">
+                <blockquote id="hitokoto-text" class="hitokoto-text"></blockquote>
+                <button id="refresh-hitokoto" class="refresh-btn" aria-label="刷新一言">
+					<i class="bi bi-arrow-clockwise"></i>
+					<span>刷新</span>
+				</button>
+            </div>
+        </footer>
+    </div>
+
+    <button id="theme-switcher" class="theme-switcher" aria-label="切换主题">
+        <i class="bi bi-sun-fill"></i>
+        <i class="bi bi-moon-stars-fill" style="display:none;"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

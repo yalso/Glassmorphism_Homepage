@@ -1,0 +1,204 @@
+/* style.css */
+/* --- 全局与字体 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+
+:root {
+  --font-family-base: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius-base: 16px; /* 圆角稍大，玻璃质感更明显 */
+  --transition-speed: 0.25s;
+  --ease-curve: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --container-width: 900px; /* 容器宽度微调 */
+}
+
+/* --- 主题颜色变量 (玻璃质感) --- */
+html[data-theme='light'] {
+  --color-bg: #f4f5f7;
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #5a5a5f;
+  --color-accent: #007aff;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(0, 0, 0, 0.08);
+  --card-hover-bg: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+html[data-theme='dark'] {
+  --color-bg: #121212;
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #a1a1a6;
+  --color-accent: #0a84ff;
+  --card-bg: rgba(30, 30, 30, 0.5);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --card-hover-bg: rgba(50, 50, 50, 0.7);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --- 基础与布局 --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color var(--transition-speed) var(--ease-curve);
+}
+.container { max-width: var(--container-width); margin: 0 auto; padding: 40px 20px; }
+
+/* --- 布局解决方案：链接网格 (核心修改) --- */
+.links-grid {
+  display: grid;
+  gap: 20px;
+  /* 移动端默认为单列 */
+  grid-template-columns: 1fr;
+}
+/* 在平板及以上屏幕，应用三列布局 */
+@media (min-width: 768px) {
+  .links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* 这个 class 由 JS 根据 span: 2 动态添加 */
+  .md-col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .md-col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+}
+
+/* --- 卡片样式 (玻璃质感) --- */
+.links-section { margin-bottom: 48px; }
+.section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; text-align: center; }
+
+.card {
+  display: flex;
+  text-decoration: none;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-base);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px var(--shadow-color);
+  transition: all var(--transition-speed) var(--ease-curve);
+  overflow: hidden; /* 防止内容溢出圆角 */
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: var(--card-hover-bg);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border-color: var(--color-accent);
+}
+.card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+/* 卡片内容样式 */
+.card h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+.card p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+.card h2 .bi {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* 图片卡片特殊样式 */
+.image-card {
+  background-size: cover;
+  background-position: center;
+  color: white;
+  min-height: 200px;
+}
+.image-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%);
+  z-index: 1;
+}
+.image-card .card-content {
+  position: relative;
+  z-index: 2;
+  justify-content: flex-end; /* 内容置于底部 */
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+.image-card h2, .image-card p {
+  color: white;
+}
+.image-card h2 .bi {
+  color: white;
+}
+
+/* --- 其他组件样式 (来自您的 style.css) --- */
+.profile-header, .name-section, .bio-section, .hitokoto-section, .theme-switcher {
+    /* 保持您原有的样式 */
+    text-align: center;
+}
+.profile-header { margin-bottom: 32px; }
+.avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; }
+.name { font-size: 2.5rem; font-weight: 700; }
+.title { font-size: 1.1rem; font-weight: 500; color: var(--color-text-secondary); margin-top: 4px; }
+.bio { max-width: 600px; margin: 0 auto 48px; line-height: 1.7; }
+.hitokoto-container { padding: 24px; background: var(--card-bg); border-radius: var(--radius-base); backdrop-filter: blur(16px); }
+.hitokoto-text { font-style: italic; }
+.theme-switcher { position: fixed; top: 20px; right: 20px; z-index: 1000; width: 44px; height: 44px; border: 1px solid var(--card-border); border-radius: 50%; cursor: pointer; }
+
+/* --- 刷新一言按钮 --- */
+.hitokoto-section { margin-top: 16px; text-align: center; }
+.hitokoto-container {
+    padding: 12px;
+    background: var(--card-bg);
+    border-radius: var(--radius-base);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--card-border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+.hitokoto-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    text-align: center;
+}
+.refresh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-base);
+    cursor: pointer;
+    transition: all var(--transition-speed) var(--ease-curve);
+}
+.refresh-btn:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    box-shadow: 0 2px 6px rgba(0, 122, 255, 0.3); /* 更柔和的阴影 */
+}
+.refresh-btn i {
+    font-size: 1rem;
+}
