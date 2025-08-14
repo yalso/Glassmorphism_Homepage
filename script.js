@@ -1,36 +1,37 @@
-// app.js
+// script.js
 document.addEventListener('DOMContentLoaded', () => {
     // --- 配置信息 ---
     const personalData = {
-        name: "SSBX",
-        title: "生生不息",
-        avatar: "https://img.qlqqs.com/b/2025/08/13/689c8cfedbc32.png",
-        bio: "生生不息",
+        name: "Linux Do",
+        title: "Linux Do",
+        avatar: "https://linux.do/uploads/default/optimized/4X/6/a/6/6a6affc7b1ce8140279e959d32671304db06d5ab_2_180x180.png",
+        bio: "Linux Do",
 
         // --- “我的网站”数据结构更新 ---
         // span: 1  => 占据1列
         // span: 2  => 占据2列
+		// span: 3  => 占据3列
         // type: 'image' => 设为图片背景卡片
         websites: [
             {
                 title: "个人博客",
                 description: "记录我的技术、生活与思考。",
-                url: "https://blog.136188.xyz/",
+                url: "https://linux.do/",
                 icon: "bi-journal-richtext",
                 span: 2 // 这个卡片将占据2列
             },
             {
-                title: "论文拼图",
-                description: "一个提供科研论文图片拼图服务的网站。",
-                url: "https://paper.136188.xyz/",
+                title: "样例",
+                description: "一个样例网站。",
+                url: "https://example.com/",
                 icon: "bi-images",
                 span: 1 // 这个卡片将占据1列
             },
             {
-                title: "XXX",
+                title: "图片卡片",
                 description: "XXXX。",
                 url: "#", // 替换为您的链接
-                span: 3,
+                span: 3,  // 这个卡片将占据3列
                 type: 'image', // 特殊类型：图片卡片
                 imageUrl: 'https://api.dujin.org/bing/1920.php' // 替换为您的图片URL
             },
@@ -49,14 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 title: "邮箱",
                 description: "随时欢迎与我联系。",
-                url: "mailto:lts2233@hotmail.com",
+                url: "example@example.com",
                 icon: "bi-envelope-fill",
                 span: 1
             },
             {
                 title: "Telegram",
                 description: "加入我的频道或私聊。",
-                url: "",
+                url: "https://example.com",
                 icon: "bi-telegram",
                 span: 1
             }
